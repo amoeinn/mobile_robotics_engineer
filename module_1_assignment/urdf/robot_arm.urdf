@@ -1,0 +1,40 @@
+<robot name="robot_arm">
+  <link name="base_link"/>
+  <link name="link1"/>
+  <link name="link2"/>
+  <link name="link3"/>
+  <link name="finger_left"/>
+  <link name="finger_right"/>
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+  <joint name="finger_left_joint" type="prismatic">
+    <parent link="link3"/>
+    <child link="finger_left"/>
+    <origin xyz="0.05 0.03 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0.0" upper="0.05" effort="5" velocity="0.01"/>
+  </joint>
+  <joint name="finger_right_joint" type="prismatic">
+    <parent link="link3"/>
+    <child link="finger_right"/>
+    <origin xyz="0.05 -0.03 0" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="0.0" upper="0.05" effort="5" velocity="0.01"/>
+  </joint>
+</robot>
